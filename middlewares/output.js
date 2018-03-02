@@ -17,7 +17,11 @@ module.exports = {
         }
         res.error = (data,error) => {
             // write your logger here 
+            if(process.env.NODE_ENV =='development') {
+                console.log('error',error)
+            }
             output.error(res,data);
+            
         }
         next();
     }
