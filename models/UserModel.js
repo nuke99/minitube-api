@@ -19,6 +19,14 @@ UserModel.create = (user => {
     })
 })
 
+
+UserModel.truncate = () => {
+    return UserSchema.destroy({
+        where: {},
+        truncate: false
+    })
+}
+
 const _passwordHashGen = (password) => {
     return sha1(sha1(password));
 }

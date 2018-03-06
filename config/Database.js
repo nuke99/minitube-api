@@ -1,5 +1,9 @@
 const Sequelize = require('sequelize');
-require('dotenv').config()
+require('dotenv').config({
+    path : __dirname+'/../.env.'+process.env.NODE_ENV
+})
+
+
 
 const creds = {
     db : process.env.DATABASE,
@@ -14,7 +18,8 @@ const seq = new Sequelize(creds.db, creds.name, creds.password, {
     define : {
         timestamps : false, 
         freezeTableName : true
-    }
+    },
+    logging : false
 });
 
 
