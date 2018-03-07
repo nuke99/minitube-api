@@ -5,6 +5,7 @@ const Router        = require('./config/Routes');
 
 const output = require('./middlewares/output');
 const db = require('./config/Database');
+var cors = require('cors')
 
 
 
@@ -12,6 +13,7 @@ app.use(output.responses);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json({type : 'application/json'}))
+app.use(cors())
 
 app.use(Router);
 

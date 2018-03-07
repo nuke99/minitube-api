@@ -35,6 +35,15 @@ UserModel.findUserByID = (user_id) => {
     })
 }
 
+UserModel.authenticate = (email,password) => {
+    return UserSchema.findOne({
+        where : {
+            email : email , 
+            password : _passwordHashGen(password)
+        }
+    })
+}
+
 
 const _passwordHashGen = (password) => {
     return sha1(sha1(password));

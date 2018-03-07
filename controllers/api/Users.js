@@ -57,7 +57,7 @@ router.post('/',(req,res)=> {
 /**
  * Create and return a guest token
  */
-router.get('/guest-token',(req,res) => {
+router.post('/guest-token',(req,res) => {
     const _rand = parseInt(Math.random() * (99999 - 10000) + 10000);
     const _timestamp = Date.now();
     const _token = sha1(_rand+_timestamp);
