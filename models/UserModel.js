@@ -45,6 +45,7 @@ UserModel.authenticate = (email,password) => {
 }
 
 
+
 const _passwordHashGen = (password) => {
     return sha1(sha1(password));
 }
