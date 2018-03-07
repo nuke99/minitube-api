@@ -24,7 +24,7 @@ const seq = new Sequelize(creds.db, creds.name, creds.password, {
 
 
 seq.authenticate().then(() => {
-    console.log('[+] database connected');
+    // console.log('[+] database connected');
 }).catch(error => {
     console.error('[!] Error connecting ',error)
 })

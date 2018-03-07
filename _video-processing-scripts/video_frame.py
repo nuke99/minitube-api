@@ -38,3 +38,7 @@ def frame_analise(video_path):
                         # Talk to the neural net and get a name
                         print "has faces"
                         name_the_face(gray_face)
+            else: 
+                pass
+        else:
+            pass
