@@ -16,7 +16,9 @@ let expect = chai.expect;
 
 
 //Clear All data 
-
+Users.truncate().then(() => {
+    
+})
 
 
 
@@ -25,19 +27,17 @@ describe('Models',() => {
     describe('Users',() => {
         describe('attrs',() => {
             let guest_token ;
-            let user 
+            let user ;
 
             //Before
             beforeEach((done) => {
-                Users.truncate().then(() => {
-                    GuestToken.generate().then(gtoken => {
-                        // console.log(gtoken)
-                        guest_token = gtoken.dataValues
-                        done();
-                    }).catch(error => {
-                        throw error
-                        done();
-                    })
+                GuestToken.generate().then(gtoken => {
+                    // console.log(gtoken)
+                    guest_token = gtoken.dataValues
+                    done();
+                }).catch(error => {
+                    throw error
+                    done();
                 })
 
                                
@@ -53,7 +53,7 @@ describe('Models',() => {
         
                 }                
                 Users.create(create_user).then(_user => {
-                    user = _user
+                    user = _user.dataValues
                     expect(_user).to.have.property('name')
                     expect(_user).to.have.property('id')
                     expect(_user).to.have.property('email')
@@ -70,8 +70,16 @@ describe('Models',() => {
             })
 
             it('should fetch the user', (done) => {
+                
                 Users.findUserByID(user.id).then(_user => {
-                    console.log('user',_user);
+                    expect(_user).to.have.property('name')
+                    expect(_user).to.have.property('id')
+                    expect(_user).to.have.property('email')
+                    expect(_user).to.have.property('password')
+                    expect(_user).to.have.property('guest_token_id')
+                    expect(_user).to.have.property('status')
+                    expect(_user.password).to.equal('d7432b084eda3ad96b53aa55e0c06f42212b14bd')
+                    done();
                 })
 
 

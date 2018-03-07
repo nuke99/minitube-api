@@ -27,6 +27,15 @@ UserModel.truncate = () => {
     })
 }
 
+UserModel.findUserByID = (user_id) => {
+    return UserSchema.findOne({
+        where : {
+            id : user_id
+        }
+    })
+}
+
+
 const _passwordHashGen = (password) => {
     return sha1(sha1(password));
 }
