@@ -53,7 +53,6 @@ describe('Models',() => {
             })
 
             it('should create a user ',(done) => {
-                              
                 Users.create(create_user).then(_user => {
                     user = _user.dataValues
                     expect(_user).to.have.property('name')
@@ -63,7 +62,6 @@ describe('Models',() => {
                     expect(_user).to.have.property('guest_token_id')
                     expect(_user).to.have.property('status')
                     expect(_user.password).to.equal('d7432b084eda3ad96b53aa55e0c06f42212b14bd')
-                    
                     done()
                 }).catch(error => {
                     throw error
@@ -72,7 +70,6 @@ describe('Models',() => {
             })
 
             it('should fetch the user', (done) => {
-                
                 Users.findUserByID(user.id).then(_user => {
                     expect(_user).to.have.property('name')
                     expect(_user).to.have.property('id')
@@ -86,7 +83,6 @@ describe('Models',() => {
             })
 
             it('should authenticate', (done) => {
-                
                 Users.authenticate(create_user.email,create_user.password).then(_user => {
                     expect(_user.email).to.equal(create_user.email);
                     done();
